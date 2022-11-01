@@ -6,6 +6,7 @@
 
 #include <stdlib.h>
 #include <assert.h>
+#include <math.h>
 
 #include "dynarray.h"
 
@@ -104,8 +105,10 @@ void dynarray_insert(struct dynarray* da, void* val) {
    * Make sure we have enough space for the new element.  Resize if needed.
    * Here, we double the array's capacity each time it needs to be resized.
    */
+  int k = ;
   if (da->size == da->capacity) {
-    _dynarray_resize(da, 2 * da->capacity);
+    k = pow(2, da->capacity);
+    _dynarraycdresize(da, k);
   }
 
   /*
